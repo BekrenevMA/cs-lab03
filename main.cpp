@@ -45,24 +45,8 @@ vector<size_t> make_histogram(const vector<double>& numbers, size_t bin_count)
     return result;
 }
 
-int main()
+void show_histogram_text(const vector<size_t>& bins)
 {
-    // Ввод данных
-    size_t number_count;
-    cerr << "Enter number count: ";
-    cin >> number_count;
-
-    cerr << "Enter numbers: ";
-    const auto numbers = input_numbers(number_count);
-
-    size_t bin_count;
-    cerr << "Enter column count: ";
-    cin >> bin_count;
-
-    // Обработка данных
-    const auto bins = make_histogram(numbers, bin_count);
-
-    // Вывод данных
     const size_t SCREEN_WIDTH = 80;
     const size_t MAX_ASTERISK = SCREEN_WIDTH - 4 - 1;
 
@@ -101,6 +85,24 @@ int main()
         }
         cout << '\n';
     }
+}
+
+int main()
+{
+    size_t number_count;
+    cerr << "Enter number count: ";
+    cin >> number_count;
+
+    cerr << "Enter numbers: ";
+    const auto numbers = input_numbers(number_count);
+
+    size_t bin_count;
+    cerr << "Enter column count: ";
+    cin >> bin_count;
+
+    const auto bins = make_histogram(numbers, bin_count);
+
+    show_histogram_text(bins);
 
     return 0;
 }
